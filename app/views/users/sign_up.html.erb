@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>sign_up</title>
+</head>
+<body>
+
+  <h1>會員註冊</h1>
+  <br>
+  <br>
+  <br>
+  <br>
+
+  <%= form_for(User.new, url: '/sign_up' , method: 'post' ) do |f| %>
+
+  <div>
+    <%= f.label :email , "帳號" %>
+    <%= f.text_field :email %>  
+  </div>
+
+  <div>
+    <%= f.label :password , "密碼" %>
+    <%= f.password_field :password %>
+  </div>
+
+  <div>
+    <%= f.label :password_confirm , "確認密碼" %>
+    <%= f.password_field :password_confirm %>
+  </div>
+
+  <div>
+    <%= f.submit "註冊" %>
+  </div>
+    
+  <% end %>
+
+
+</body>
+</html>
+<!--  原本的寫法比較複雜 還需要另外加input
+<form action="/sign_up" method="post"> 
+  Email:<input type="text">
+  Password: <input type="password">
+  Password-confirm: <input type="password">
+  <input type="submit" value="Confirm">
+</form>
+-->
+
