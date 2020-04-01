@@ -1,12 +1,28 @@
 class UsersController < ApplicationController
 
   def login
+    @user = User.new
   end
 
   def sign_up
     @user = User.new
     #render :sign_up
+  end
 
+  def sign_in
+    #查資料庫
+    #select * from users
+    #where email = ? and password = ?
+    #可以拿下面那個隱藏的方法
+    user = User.find_by(email: user_params[:email],
+                        password: user_params[:password])
+
+    if user
+      session[:ccc9527] = user.email
+      redirect_to root_path
+    else
+      redirect_to login_path
+    end
   end
 
   def registration
@@ -22,6 +38,11 @@ class UsersController < ApplicationController
         #失敗 但幫忙留住資料 讓資料可以重複使用
       render :sign_up
     end
+  end
+
+  def logout
+    session[:ccc9527] = nil
+    redirect_to root_path
   end
 
 
