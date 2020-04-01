@@ -1,33 +1,21 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>login</title>
-</head>
-<body>
-  <h1>使用者登入</h1>
-  <br>
+<h1>使用者登入</h1>
+<br>
 
-  <%= form_for(@user, url: login_path, method: 'post' ) do |f| %>
-    <div>
-      <%= f.label :email , "帳號" %>
-      <%= f.text_field :email %>  
-    </div>
+<%= form_for(@user, url: login_path, method: 'post' ) do |f| %>
+  <div>
+    <%= f.label :email , "帳號" %>
+    <%= f.text_field :email %>  
+  </div>
 
-    <div>
-      <%= f.label :password , "密碼" %>
-      <%= f.password_field :password %>
-    </div>
+  <div>
+    <%= f.label :password , "密碼" %>
+    <%= f.password_field :password %>
+  </div>
 
-    <div>
-      <%= f.submit "登入" %>
-    </div>
-  <% end %>
-
-
-
-
+  <div>
+    <%= f.submit "登入" %>
+  </div>
+<% end %>
 
 
 <%# 
@@ -38,7 +26,3 @@
    </form>
  %>
 
-
-  
-</body>
-</html>

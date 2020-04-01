@@ -1,25 +1,16 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>sign_up</title>
-</head>
-<body>
+<h1>會員註冊</h1>
+<br>
+<br>
 
-  <h1>會員註冊</h1>
-  <br>
-  <br>
+<%= form_for(@user, url: '/sign_up' , method: 'post' ) do |f| %>
 
-  <%= form_for(@user, url: '/sign_up' , method: 'post' ) do |f| %>
-
-    <% if @user.errors.any? %>
-      <ul>
+  <% if @user.errors.any? %>
+    <ul>
       <% @user.errors.full_messages.each do |message|%>
         <li><%= message %></li>
       <% end %>
-      </ul>
-    <% end %>
+    </ul>
+  <% end %>
 
   <div>
     <%= f.label :email , "帳號" %>
@@ -40,17 +31,15 @@
     <%= f.submit "註冊" %>
   </div>
     
-  <% end %>
+<% end %>
 
-
-</body>
-</html>
-<!--  原本的寫法比較複雜 還需要另外加input
-<form action="/sign_up" method="post"> 
-  Email:<input type="text">
-  Password: <input type="password">
-  Password-confirm: <input type="password">
-  <input type="submit" value="Confirm">
-</form>
+<!--  
+  原本的寫法比較複雜 還需要另外加input
+  <form action="/sign_up" method="post"> 
+    Email:<input type="text">
+    Password: <input type="password">
+    Password-confirm: <input type="password">
+    <input type="submit" value="Confirm">
+  </form>
 -->
 

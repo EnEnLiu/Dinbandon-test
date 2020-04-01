@@ -4,14 +4,27 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>shared-navbar</title>
+  <style>
+    *{
+        margin: 0;
+        padding: 0;
+        list-style: none;
+    }
+    .navbar-main{
+      background-color: rgb(55, 215, 177);
+      padding: 10px;
+    }
+  </style>
 </head>
 <body>
-  <% if session[:ccc9527] %>
-    哈囉！<%= session[:ccc9527] %> | 
-    <%= link_to "登出", logout_path , method: 'delete'%> 
-  <% else %>
-    <a href="/sign_up">註冊</a>
-    <a href="/login">登入</a>  
-  <% end %>
+  <div class="navbar-main">
+    <% if session[:ccc9527] %>
+      哈囉！<%= session[:ccc9527] %> | 
+      <%= link_to "登出", logout_path , method: 'delete'%> 
+    <% else %>
+      <a href="/sign_up">註冊</a>
+      <a href="/login">登入</a>  
+    <% end %>
+  </div>
 </body>
 </html>
