@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
+  resources :categories
   #根目錄get '/' , to: "welcome#index"
-  root "welcome#index"
+  root "items#index"
 
 
   #users
