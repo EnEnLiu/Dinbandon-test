@@ -1,6 +1,4 @@
 class ItemsController < ApplicationController
-  rescue_from ActiveRecord::RecordNotFound, with: :record_not_found
-
   def index
     @items = Item.all
   end
@@ -12,6 +10,14 @@ class ItemsController < ApplicationController
     #rescue
     #  redirect_to items_path, notice: "沒有這個餐點"
     #end
+  end
+
+  def edit
+    @item = Item.find(params[:id]) 
+   
+  end
+
+  def update
   end
 
   def new
@@ -36,19 +42,11 @@ class ItemsController < ApplicationController
     redirect_to items_path, notice: '成功刪除餐點'
   end
 
-
   private
   def item_params
     params.require(:item).permit(:name,
                                  :description,
                                  :price,
                                  :spec)
-  end
-
-  def record_not_found
-    render file: 'public/404.html',
-           status: 404,
-           layout: false
-    #redirect_to items_path, notice: '找嘸!'
   end
 end
