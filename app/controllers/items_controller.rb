@@ -60,7 +60,8 @@ class ItemsController < ApplicationController
     params.require(:item).permit(:name,
                                  :description,
                                  :price,
-                                 :spec)
+                                 :spec,
+                                 :category_id)
   end
   def find_item
     @item = Item.find(params[:id])
