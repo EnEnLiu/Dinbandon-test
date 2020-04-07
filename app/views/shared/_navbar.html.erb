@@ -20,9 +20,10 @@
 <body>
   <div class="navbar-main">
     <%= link_to "餐點列表", items_path %>|
-    <% if session[:ccc9527] %>
-      哈囉！<%= session[:ccc9527] %> | 
+    <% if current_user %>
+      哈囉！<%= current_user %> | 
       <%= link_to "登出", logout_path , method: 'delete'%> 
+      <%= link_to "我要開團", "#"%>
     <% else %>
       <a href="/sign_up">註冊</a>|
       <a href="/login">登入</a>  

@@ -3,6 +3,8 @@ class ApplicationController < ActionController::Base
               with: :record_not_found
 
   before_action :check_login
+  
+  helper_method :current_user
 
   private
   def check_login
