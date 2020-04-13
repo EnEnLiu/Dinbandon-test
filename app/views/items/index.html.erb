@@ -2,11 +2,11 @@
 
 <%= link_to "新增", new_item_path %>
 
-<div class="row">
+<div class="row ">
   <% @items.each do |item| %>
-    <div class="col-4">
-      <div class="card">
-        <%= image_tag item.cover.variant(resize_to_limit: [200, 100]),class: 'card-img-top' if item.cover.attached? %>
+    <div class="col-4 item">
+      <div class="card ">
+        <%= image_tag item.cover.variant(resize_to_limit: [200, 100]),class: 'cover-image' if item.cover.attached? %>
         <div class="card-doby">
           <h5 class="card-title">
             <%= link_to item.name, item_path(item.id) %>
