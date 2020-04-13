@@ -23,7 +23,6 @@ RSpec.describe Cart, type: :model do
     end
   end
 
-
   describe "進階功能" do
   end
 end
