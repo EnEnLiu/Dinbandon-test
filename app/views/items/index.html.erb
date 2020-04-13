@@ -2,13 +2,20 @@
 
 <%= link_to "新增", new_item_path %>
 
-<ul>
+<div class="row">
   <% @items.each do |item| %>
-    <li>
-      <%= link_to item.name, item_path(item.id) %>
-      <%# <%= link_to item.name, item 現在可以簡寫成這樣 省去.id 而item_path可以直接簡化成 item %>
-      <%= link_to "編輯", edit_item_path(item.id) %> 
-      <%= link_to "刪除", item_path(item.id), method: 'delete', data: { confirm: "是否確認刪除？" }%>
-    </li>
+    <div class="col-4">
+      <div class="card">
+        <%= image_tag item.cover.variant(resize_to_limit: [200, 100]),class: 'card-img-top' if item.cover.attached? %>
+        <div class="card-doby">
+          <h5 class="card-title">
+            <%= link_to item.name, item_path(item.id) %>
+          </h5>
+          <%= link_to "編輯", edit_item_path(item.id), class: 'btn btn-primary' %> 
+          <%= link_to "刪除", item_path(item.id), method: 'delete', data: { confirm: "是否確認刪除？"}, class: 'btn btn-success' %>            
+        </div>
+      </div>
+    </div>
   <% end %>
-</ul>  
+</div>
+
