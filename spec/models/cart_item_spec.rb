@@ -1,0 +1,20 @@
+require 'rails_helper'
+
+RSpec.describe CartItem, type: :model do
+  describe "基本功能" do
+    it "每個Cart Item都可以計算他自己的金額（小計）" do
+      cart = Cart.new
+
+      i1 = FactoryBot.create(:item, price: 50)
+      i2 = FactoryBot.create(:item, price: 100)
+
+      3.times { cart.add_item(i1.id) }
+      2.times { cart.add_item(i2.id) }
+
+      expect(cart.items.first.total).to be 150
+      expect(cart.items.last.total).to be 200
+      
+    end
+  end
+
+end

@@ -42,16 +42,6 @@ RSpec.describe Cart, type: :model do
 
 
 
-
-
-
-
-
-
-    it "每個Cart Item都可以計算他自己的金額（小計）" do
-
-    end
-
     it "可以計算整台購物車的總消費金額" do
     end
 
