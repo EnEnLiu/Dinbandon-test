@@ -23,8 +23,9 @@ class Cart
 
   def total
     result = @items.sum { |item| item.total }
+    #4/1全館打1折
     if Time.now.month ==  4 and Time.now.day == 1
-      result  = result * 0.1
+      result  = result * 0.1 
     end
 
     return result
@@ -37,5 +38,18 @@ class Cart
     #  tmp += item.total 
     #end
     #return tmp
+  end
+
+  def to_hash
+    items = []
+
+    @items.each do |item|
+      items << { "item_id" => item.item_id, 
+                 "quantity" => item.quantity }
+    end
+
+    return {
+      "items" => items
+    }
   end
 end
