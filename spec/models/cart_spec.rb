@@ -50,10 +50,21 @@ RSpec.describe Cart, type: :model do
       2.times { cart.add_item(i2.id) }
       
       expect(cart.total).to be 350
-
     end
 
-    it "特別活動可搭配折扣（例如聖誕節全面9折、或滿千送百、滿額免運" do
+    it "特別活動可搭配折扣" do
+      cart = Cart.new
+
+      i1 = FactoryBot.create(:item, price: 50)
+      i2 = FactoryBot.create(:item, price: 100)
+
+      3.times { cart.add_item(i1.id) }
+      2.times { cart.add_item(i2.id) }
+
+      t = Time.local(2008, 4, 1, 10, 5, 0)
+      Timecop.travel(t)
+
+      expect(cart.total).to be 35.0
     end
   end
 

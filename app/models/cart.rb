@@ -22,12 +22,20 @@ class Cart
   end
 
   def total
-    #@item.reduce(0) { |sum, item| sum + item.total }
-
-    tmp  =  0
-    @items.each do |item|
-      tmp += item.total 
+    result = @items.sum { |item| item.total }
+    if Time.now.month ==  4 and Time.now.day == 1
+      result  = result * 0.1
     end
-    return tmp
+
+    return result
+
+    #@item.reduce(0) { |sum, item| sum + item.total }
+    #@item.sum { |item| item.total }
+
+    #tmp  =  0
+    #@items.each do |item|
+    #  tmp += item.total 
+    #end
+    #return tmp
   end
 end
