@@ -3,11 +3,13 @@ class Cart
     @items = []
   end
   def add_item(item_id)
-    @items << item_id
-    if 
-      
+    #檢查
+    found_item = @items.find { |item| item.item_id == item_id}
+
+    if found_item
+      found_item.increment!
     else
-      
+      @items << CartItem.new(item_id)
     end
   end
 

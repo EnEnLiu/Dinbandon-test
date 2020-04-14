@@ -7,7 +7,7 @@ RSpec.describe Cart, type: :model do
       # Arrange
       cart = Cart.new
       # Act
-      cart.add_item(1)
+      cart.add_item(1)  
       # Assert
       expect(cart.empty?).to be false
     end
@@ -21,8 +21,37 @@ RSpec.describe Cart, type: :model do
 
       expect(cart.items.count).to be 2
     end
+
+    it "商品可以放到購物車裡，也可以再拿出來" do
+      cart = Cart.new
+
+      cat1 = Category.create(name: 'Cat1')
+      i1 = cat1.items.create(name: 'item1', price: '100')
+      i2 = cat1.items.create(name: 'item2', price: '80')
+
+      3.times { cart.add_item(i1.id) }
+      2.times { cart.add_item(i2.id) }
+
+      expect(cart.items.first.item).to be_a Item
+      expect(cart.items.first.item.price).to be_a 100
+    end
+
+    it "每個Cart Item都可以計算他自己的金額（小計）" do
+
+    end
+
+    it "可以計算整台購物車的總消費金額" do
+    end
+
+    it "特別活動可搭配折扣（例如聖誕節全面9折、或滿千送百、滿額免運" do
+    end
   end
 
   describe "進階功能" do
+    it "可以將購物車內容轉換成Hash並存到session裡" do
+    end
+  
+    it "也可以存放在Session的內容（Hash格式），還原成購物車的內容" do
+    end
   end
 end
