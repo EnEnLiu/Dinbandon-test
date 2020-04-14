@@ -89,7 +89,20 @@ RSpec.describe Cart, type: :model do
 
     end
   
-    it "也可以存放在Session的內容（Hash格式），還原成購物車的內容" do
+    it "Hash還原成購物車的內容" do
+      result = {
+        "items" => [
+          { "item_id" => 1, "quantity" => 3 },
+          { "item_id" => 2, "quantity" => 2 }
+        ]
+      }
+
+      cart = Cart.form_hash(result)
+
+      expect(cart.empty?).to be false
+      expect(cart.items.count).to be 2
+
     end
+
   end
 end

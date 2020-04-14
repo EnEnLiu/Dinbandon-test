@@ -1,6 +1,6 @@
 class Cart
-  def initialize
-    @items = []
+  def initialize(items = [])
+    @items = items
   end
   def add_item(item_id)
     #檢查
@@ -40,14 +40,36 @@ class Cart
     #return tmp
   end
 
-  def to_hash
-    items = []
+  def self.form_hash(hash = nil)
+    if hash && hash["items"] 
+      #items = []
 
-    @items.each do |item|
-      items << { "item_id" => item.item_id, 
-                 "quantity" => item.quantity }
+      #hash["items"].each do |item|
+      #  items << CartItem.new(item["item_id"], item["quantity"])
+      #end
+
+      items = hash["items"].map { |item|
+        CartItem.new(item["item_id"], item["quantity"])
+      } 
+
+      #Cart.new(items) 在類別裡可直接呼叫他自己的方法 小括號也省略
+      new items
+    else
+      #Cart.new 在類別裡可直接呼叫他自己的方法
+      new
     end
+  end
 
+  def to_hash
+    #items = []
+
+    #@items.each do |item|
+    #  items << { "item_id" => item.item_id, 
+    #             "quantity" => item.quantity }
+    #end
+    items = @items.map { |item|
+      { "item_id" =>  item.item_id, "quantity" => item.quantity }
+  }
     return {
       "items" => items
     }
