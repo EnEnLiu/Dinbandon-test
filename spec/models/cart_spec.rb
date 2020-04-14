@@ -25,16 +25,28 @@ RSpec.describe Cart, type: :model do
     it "商品可以放到購物車裡，也可以再拿出來" do
       cart = Cart.new
 
-      cat1 = Category.create(name: 'Cat1')
-      i1 = cat1.items.create(name: 'item1', price: '100')
-      i2 = cat1.items.create(name: 'item2', price: '80')
+      #cat1 = Category.create(name: 'Cat1')
+      #cat1 = Factory.create(name: 'Cat1')
+      #i1 = cat1.items.create(name: 'item1', price: '100')
+      #i2 = cat1.items.create(name: 'item2', price: '80')
+
+      i1 = FactoryBot.create(:item)
+      i2 = FactoryBot.create(:item)
 
       3.times { cart.add_item(i1.id) }
       2.times { cart.add_item(i2.id) }
 
       expect(cart.items.first.item).to be_a Item
-      expect(cart.items.first.item.price).to be_a 100
+      expect(cart.items.first.item.price).to be i1.price
     end
+
+
+
+
+
+
+
+
 
     it "每個Cart Item都可以計算他自己的金額（小計）" do
 
