@@ -16,6 +16,7 @@ class ItemsController < ApplicationController
     #rescue
     #  redirect_to items_path, notice: "沒有這個餐點"
     #end
+    @comment = Comment.new
   end
 
   def edit

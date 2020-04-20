@@ -33,7 +33,9 @@ RSpec.describe Cart, type: :model do
 
     it "商品可以放到購物車裡，也可以再拿出來" do
       #cat1 = Category.create(name: 'Cat1')
+
       #cat1 = Factory.create(name: 'Cat1')
+
       #i1 = cat1.items.create(name: 'item1', price: '100')
       #i2 = cat1.items.create(name: 'item2', price: '80')
 

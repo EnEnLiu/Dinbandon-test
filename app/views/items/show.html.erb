@@ -13,3 +13,12 @@
     <%= @item.spec %>
   </li>
 </ul>
+
+<hr>
+<h3>留言</h3>
+<%= form_for(@comment, url: item_comments_path(@item)) do |form| %>
+<div>
+  <%= form.text_area :content %>
+</div>
+  <%= form.submit %>
+<% end %> 
