@@ -16,7 +16,7 @@ class CommentsController <  ApplicationController
     # @comment.item = @item 可以直接寫在上句的後面
 
     if @comment.save
-      redirect_to item_path(params[:item_id]), notice: "OK!"
+      # redirect_to item_path(params[:item_id]), notice: "OK!"
     else
       render 'items/show'
     end

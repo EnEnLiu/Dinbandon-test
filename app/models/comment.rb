@@ -4,5 +4,5 @@ class Comment < ApplicationRecord
 
   validates :content, presence: true, length: { minimum:2 }
 
-  # default_scope { order(id: :desc) }
+  default_scope { order(id: :desc) }
 end

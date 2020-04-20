@@ -17,7 +17,7 @@ class ItemsController < ApplicationController
     #  redirect_to items_path, notice: "沒有這個餐點"
     #end
     @comment = Comment.new
-    @comments = @item.comment.order(id: :desc)
+    @comments = @item.comment.includes(:user)
   end
 
   def edit
